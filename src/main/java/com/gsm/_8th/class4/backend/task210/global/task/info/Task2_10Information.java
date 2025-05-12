@@ -26,7 +26,7 @@ public class Task2_10Information {
         log.info("\033[32m과제: 2-10\033[0m");
         log.info("\033[32m요약: JUnit 단위테스트 작성\033[0m");
         log.info("\033[33m과제 수행기간: 2025/05/16~2025/05/25\033[0m");
-        log.info("\033[35mNotion을 참고하여 과제를 수행해주세요: [URL]\033[0m");
+        log.info("\033[35mNotion을 참고하여 과제를 수행해주세요: https://amondbabaro.notion.site/2-10-2025-05-16-2025-05-25-1f18f98f33108080af7bf8b10ad8eb59?pvs=74\033[0m");
         log.info("\033[31m과제를 수행하면서 궁금한 점이나 문제가 발생하면 언제든지 질문해주세요\033[0m");
         log.info("\033[31m과제를 완료하면 Discord 채널에 과제 완료 보고 부탁드립니다\033[0m");
         log.info("\033[36m언제나 화이팅입니다!\033[0m");
