@@ -3,7 +3,7 @@ package com.gsm._8th.class4.backend.task210.domain.news.service.impl;
 import com.gsm._8th.class4.backend.task210.domain.news.dto.News;
 import com.gsm._8th.class4.backend.task210.domain.news.entity.NewsJpaEntity;
 import com.gsm._8th.class4.backend.task210.domain.news.exception.NewsNotFoundException;
-import com.gsm._8th.class4.backend.task210.domain.news.repository.NewsRepository;
+import com.gsm._8th.class4.backend.task210.domain.news.repository.NewsJpaRepository;
 import com.gsm._8th.class4.backend.task210.domain.news.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,23 +16,23 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NewsServiceImpl implements NewsService {
 
-    private final NewsRepository newsRepository;
+    private final NewsJpaRepository newsJpaRepository;
 
     @Override
     public News getNews(Long newsId) {
-        return newsRepository.findById(newsId).orElseThrow(NewsNotFoundException::new).toDomain();
+        return newsJpaRepository.findById(newsId).orElseThrow(NewsNotFoundException::new).toDomain();
     }
 
     @Override
     public List<News> getNews() {
-        return newsRepository.findAll().stream()
+        return newsJpaRepository.findAll().stream()
                 .map(NewsJpaEntity::toDomain)
                 .toList();
     }
 
     @Override
     public News createNews(String title, String content) {
-        return newsRepository.save(NewsJpaEntity.builder()
+        return newsJpaRepository.save(NewsJpaEntity.builder()
                 .title(title)
                 .content(content)
                 .build()
@@ -41,8 +41,8 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public News updateNews(Long newsId, String title, String content) {
-        NewsJpaEntity news = newsRepository.findById(newsId).orElseThrow(NewsNotFoundException::new);
-        return newsRepository.save(
+        NewsJpaEntity news = newsJpaRepository.findById(newsId).orElseThrow(NewsNotFoundException::new);
+        return newsJpaRepository.save(
                 NewsJpaEntity.builder()
                         .newsId(news.getNewsId())
                         .title(title)
@@ -53,6 +53,6 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public void deleteNews(Long newsId) {
-        newsRepository.deleteById(newsId);
+        newsJpaRepository.deleteById(newsId);
     }
 }
