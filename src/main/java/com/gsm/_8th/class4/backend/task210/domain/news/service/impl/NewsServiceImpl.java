@@ -31,6 +31,13 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    public List<News> getNews(String keyword) {
+        return newsJpaRepository.findByKeyword(keyword).stream()
+                .map(NewsJpaEntity::toDomain)
+                .toList();
+    }
+
+    @Override
     public News createNews(String title, String content) {
         return newsJpaRepository.save(NewsJpaEntity.builder()
                 .title(title)

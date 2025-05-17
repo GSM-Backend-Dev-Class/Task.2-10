@@ -28,6 +28,11 @@ public class NewsController {
         return ResponseEntity.status(HttpStatus.OK).body(newsService.getNews());
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<News>> searchNews(@RequestParam(value = "keyword") String keyword) {
+        return ResponseEntity.status(HttpStatus.OK).body(newsService.getNews(keyword));
+    }
+
     @PostMapping
     public ResponseEntity<News> createNews(@Valid @RequestBody CommandNewsRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(newsService.createNews(request.title(), request.content()));

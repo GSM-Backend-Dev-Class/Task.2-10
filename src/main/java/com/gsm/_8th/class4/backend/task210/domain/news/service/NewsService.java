@@ -9,6 +9,8 @@ public interface NewsService {
 
     List<News> getNews();
 
+    List<News> getNews(String keyword);
+
     News createNews(String title, String content);
 
     News updateNews(Long newsId, String title, String content);
